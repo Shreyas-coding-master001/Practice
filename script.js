@@ -1,91 +1,42 @@
-let IPL = [
-  {
-    "team": "CSK",
-    "fullname": "Chennai Super Kings",
-    "primaryColor": "#F9CD05",
-    "secondaryColor": "#003A63",
-    "trophiesWon": 5
-  },
-  {
-    "team": "MI",
-    "fullname": "Mumbai Indians",
-    "primaryColor": "#004BA0",
-    "secondaryColor": "#D1AB3E",
-    "trophiesWon": 5
-  },
-  {
-    "team": "RCB",
-    "fullname": "Royal Challengers Bengaluru",
-    "primaryColor": "#D71920",
-    "secondaryColor": "#000000",
-    "trophiesWon": 0
-  },
-  {
-    "team": "KKR",
-    "fullname": "Kolkata Knight Riders",
-    "primaryColor": "#3A225D",
-    "secondaryColor": "#D4AF37",
-    "trophiesWon": 3
-  },
-  {
-    "team": "RR",
-    "fullname": "Rajasthan Royals",
-    "primaryColor": "#EA1A85",
-    "secondaryColor": "#004BA0",
-    "trophiesWon": 1
-  },
-  {
-    "team": "SRH",
-    "fullname": "Sunrisers Hyderabad",
-    "primaryColor": "#F26522",
-    "secondaryColor": "#000000",
-    "trophiesWon": 1
-  },
-  {
-    "team": "DC",
-    "fullname": "Delhi Capitals",
-    "primaryColor": "#004C93",
-    "secondaryColor": "#E31B23",
-    "trophiesWon": 0
-  },
-  {
-    "team": "PBKS",
-    "fullname": "Punjab Kings",
-    "primaryColor": "#ED1B24",
-    "secondaryColor": "#D4AF37",
-    "trophiesWon": 0
-  },
-  {
-    "team": "GT",
-    "fullname": "Gujarat Titans",
-    "primaryColor": "#1B2133",
-    "secondaryColor": "#AFA37A",
-    "trophiesWon": 1
-  },
-  {
-    "team": "LSG",
-    "fullname": "Lucknow Super Giants",
-    "primaryColor": "#0057E7",
-    "secondaryColor": "#FF8C00",
-    "trophiesWon": 0
-  }
-]
-
-let btn = document.querySelector('button');
-let box = document.getElementById('box');
 let main = document.querySelector('main');
-let h1 = document.querySelector('h1');
-let h3 = document.querySelector('h3');
-let p = document.querySelector('p');
+let btn = document.querySelector('button');
+let arr = [
+  "I came. I saw. I forgot.",
+  "Nope. Not today.",
+  "Mentally on vacation.",
+  "Out of service.",
+  "Tea first. Life later.",
+  "I paused my game for this?",
+  "Sarcasm loading…",
+  "Me? Wrong? Never.",
+  "I speak fluent ‘huh?’",
+  "I’m not weird. I’m limited edition.",
+  "My brain has left the chat.",
+  "I don’t trip. I do random gravity checks.",
+  "This is my final brain cell."
+];
 
-btn.addEventListener('click',function(){
-    let winner = IPL[Math.floor(Math.random() * IPL.length)];
-    // box.innerHTML = winner.team;
-    box.style.backgroundColor = winner.primaryColor;
-    main.style.backgroundColor = winner.secondaryColor;
-    h1.innerHTML = winner.team;
-    h3.innerHTML = winner.fullname;
-    p.innerHTML = `Trophies: ${winner.trophiesWon}`;
+
+
+
+btn.addEventListener('click',()=>{
+    let a = Math.floor(Math.random() * arr.length);
+    let x = Math.random() * 80;
+    let y = Math.random() * 80;
+    let rot = Math.random() * 360;
+    let c1 = Math.floor(Math.random() * 256);
+    let c2 = Math.floor(Math.random() * 256);
+    let c3 = Math.floor(Math.random() * 256);
+    let size = Math.floor(Math.random() * 3);
+
+    let h1 = document.createElement('h1');
+    h1.innerHTML = arr[a];
+    h1.style.position = 'absolute';
+    h1.style.top = y+'%';
+    h1.style.left = x+'%';
+    h1.style.rotate = rot+'deg';
+    h1.style.color = `rgb(${c1},${c2},${c3})`;
+    h1.style.scale = size;
+
+    main.appendChild(h1);
 });
-
-
