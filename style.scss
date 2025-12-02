@@ -1,0 +1,95 @@
+@mixin Center($aitems:center,$jcontent:center){
+    display: flex;
+    align-items: $aitems;
+    justify-content: $jcontent;
+}
+
+
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html,body{
+    width: 100%;
+    height: 100%;
+    
+}
+
+body{
+    @include Center();
+    background-color: black;
+}
+
+main{
+    height: 80%;
+    width: 30%;
+    background-color: #fff;
+    text-align: center;
+    border-radius: 5px;
+    #card{
+        width: 100%;
+        height: 70%;
+        // background-color: rosybrown;
+        padding: 20px;    
+        position: relative;
+        z-index: 3;
+        cursor: pointer;
+        overflow: hidden;
+
+        img{
+            // position: relative;
+            height: 100%;
+            border-radius: 20px;
+        }        
+        i{
+            opacity: 0;
+            position: absolute;
+            top: 50%;
+            right: 50%;
+            z-index: 9;
+            font-size: 50px;
+            background-color: transparent;
+            background: linear-gradient(to right bottom, #f9ce34, #ee2a7b, #6228d7);
+            color:transparent;
+            background-clip: text;
+            transform: translate(50%) scale(0.5) rotate(-90deg);
+            transition: all ease 0.5s;
+        }
+    }
+    #Text{
+        @include Center();
+        flex-direction: column;
+        gap: 10px;
+        margin-top: 10px;
+        
+        h1{
+            font-weight: 500;
+            font-family: Tahoma, Geneva, Verdana, sans-serif
+        }
+
+        h3{
+            color: crimson;
+            font-size: 30px;
+            font-family: 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            font-weight: 700;
+        }
+
+        button{
+            padding: 15px;
+            background-color: royalblue;
+            border: none;
+            border-radius: 40px;
+            font-size: 15px;
+            color: #fff;
+            cursor: pointer;
+        }
+        button:active{
+            scale: 0.95;
+        }
+
+    }
+    
+}
