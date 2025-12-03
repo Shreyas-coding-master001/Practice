@@ -80,4 +80,12 @@ main #Text button {
 }
 main #Text button:active {
   scale: 0.95;
+}
+
+@media (min-width: 100px) and (max-width: 800px) {
+  main {
+    width: 95%;
+    border-radius: 10px;
+    background-color: rosybrown;
+  }
 }/*# sourceMappingURL=style.css.map */

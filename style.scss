@@ -93,3 +93,11 @@ main{
     }
     
 }
+
+@media(min-width:100px) and (max-width:800px){
+    main{
+        width: 95%;
+        border-radius: 10px;
+        background-color: rosybrown;
+    }
+}
