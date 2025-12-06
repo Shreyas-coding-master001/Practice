@@ -62,7 +62,7 @@ elem.addEventListener("click",function(dets){
     let grow = 10;
 
   let inter = setInterval(() => {
-    grow += 5;
+    grow ++;
     inner.style.width = grow+"%";
   }, 30);
   setTimeout(function(){
