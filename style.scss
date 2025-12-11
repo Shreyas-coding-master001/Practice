@@ -18,67 +18,113 @@ html,body{
     background-color: black;
 }
 
+body{
+    display: flex;
+    justify-content: center;
+}
+
 main{
     height: 100%;
-    width: 100%;
-    @include Center();
-    #card{
-        height: 80%;
-        width: 30%;
-        background-color: cyan;
-        border-radius: 5px;
-        position: relative;
-        overflow: hidden;
+    width: 30vw;
+    background: linear-gradient(to right bottom, rgb(26, 26, 26), rgb(30, 30, 30), black);
+    padding: 20px;
+    // overflow: hidden;
 
-        #full-screen{
-            width: 100%;
-            height: 100%;
-            background-color: red;
+    #Reels{
+        border-radius: 10px;
+        overflow: auto;
+        scroll-snap-type: y mandatory;
+        scroll-behavior: smooth;
+
+        .musie{
             position: absolute;
-            display: none;
-            background-position: center;
-            background-size: cover;
-            .scrollbar{
-                width: 90%;
-                height: 10px;
-                background-color: #fff;
-                margin: 5px 15px;
-                border-radius: 20px;
-                .inner{
-                    width: 0%;
-                    height: 100%;
-                    border-radius: 20px;
-                    background-color: green;
+            right: 0px;
+            background-color: rgba(128, 128, 128, 0.492);
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            @include Center();
+            z-index: 5;
+
+            i{
+                font-size: 20px;
+                pointer-events: none;
+            }
+        }
+        
+        .reel{
+            position: relative;
+            overflow: hidden;
+            scroll-snap-align: start;
+            scroll-snap-stop: always;
+            video{
+                width: 100%;
+                height: 100vh;
+            }
+            .section{
+                position: absolute;
+                padding: 5px;
+                bottom: 5%;
+                width: 100%;
+                .Profile{
+                    @include Center(flex-start,center);
+                    gap: 10px;
+                    img{
+                        width: 50px;
+                        height: 50px;
+                        border: 2px solid white;
+                        border-radius: 50%;
+                        object-fit: cover;
+                        object-position: center;
+                    }
+                    h1{
+                        font-size: 1.3rem;
+                    }
+                    button{
+                        padding: 5px;
+                        border-radius: 10px;
+                        border: 2px solid white;
+                        background-color: black;
+                    }
+                    button:active{
+                        scale: 0.95;
+                    }
+                }
+                p{
+                    margin-top: 5%;
+                }
+            }
+            .right{
+                padding-right: 10px;
+                position: absolute;
+                right: 0;
+                top: 52%;
+                @include Center();
+                flex-direction: column;
+                text-align: center;
+                gap: 10px;
+                i{
+                    pointer-events: none;
+                    font-size: 30px;
+
+                }
+                p{
+                    pointer-events: none;
+                    font-size: 15px;
                 }
             }
         }
-        .elem{
-            width: 100%;
-            height: 20%;
-            border-bottom:2px solid #dadada;
-            white-space: nowrap;
-            overflow-x: auto;
-            overflow-y: hidden;
+    }
+}
 
-            .story{
-                width: 7.5vw;
-                height: 15vh;
-                border: 2px solid royalblue;
-                border-radius: 50%;
-                display: inline-block;
-                overflow: hidden;
-                margin: 2px 10px; 
 
-                img{
-                    height: 100%;
-                    width: 100%;
-                    object-fit: cover;
-                    object-position: center;
-                }
-            }           
-        }
-        .elem::-webkit-scrollbar{
-          display: none;   
-        }
+#Reels::-webkit-scrollbar{
+    display: none;
+}
+
+@media (max-width: 450px){
+    main{
+        width: 100%;
+        height: 100%;
     }
 }
