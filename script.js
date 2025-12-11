@@ -94,82 +94,49 @@ let user = [{
     "shareCount": 700,
     "reel_video_link": "https://www.pexels.com/download/video/5491519/"
   }
-];
-let reels = document.querySelector("#Reels");
+]
 
-function useApp(){
-  let sum ="";
-  user.forEach((ele,idx)=>{
-  sum += `<div class="reel">
-                <div class="musie"  id=${idx}>
-                  ${ele.ismuted?'<i class="ri-volume-mute-fill"></i>':'<i class="ri-volume-up-line"></i>'}
-                </div>
-                <video loop autoplay ${ele.ismuted?"muted":""}>
-                    <source src="${ele.reel_video_link}">
-                </video>
-                <div class="section">
-                    <div class="Profile">
-                        <img src="${ele.profile_photo}" alt="ProfilePhoto">
-                        <h1>${ele.username}</h1>
-                        <button class="FollowButton"  id=${idx}>${ele.isFollowed? "Unfollow":"Follow"}</button>
-                    </div>
-                    <p>${ele.description}</p>
-                </div>
-                <div class="right">
-                    <div class="heart" id=${idx}>${ele.isLiked?'<i class="hearticon ri-heart-fill"></i>':'<i class="hearticon ri-heart-3-line"></i>'}
-                        <p>${ele.likeCount}</p>
-                    </div>
-                    <div class="comment"><i class="ri-chat-3-line"></i>
-                        <p>${ele.commentcount}</p>
-                    </div>
-                    <div class="share"><i class="ri-share-forward-line"></i>
-                        <p>${ele.shareCount}</p>
-                    </div>
-                    <div class="more"><i class="ri-more-2-line"></i></div>
-                </div>
-            </div>`;
-  });
 
-  reels.innerHTML = sum;
-}
+let sum = "";
+users.forEach(function(ele,idx){
+    sum += `<div class="story">
+                    <img id="${idx}" src="${ele.profile_photo}" alt="">
+                </div>`
+});
 
-useApp();
+elem.innerHTML = sum;
 
-reels.addEventListener('click',(dets)=>{
-  // console.log(dets.target.className);
-  if(dets.target.className === "heart"){
+let story = document.querySelectorAll(".story");
+let fullScreen = document.querySelector("#full-screen")
 
-    if(!user[dets.target.id].isLiked){
-      user[dets.target.id].likeCount++;
-      user[dets.target.id].isLiked = true;
-    }else{
-      user[dets.target.id].likeCount--;
-      user[dets.target.id].isLiked = false;
-    }
-    useApp();
-  }
+// story.forEach((ele,idx)=>{
+//   ele.addEventListener("click",function(){
+//     fullScreen.style.backgroundImage = `url(${users[idx].story_photo})`;
+//     fullScreen.style.display = "block";
 
-  if(dets.target.className === "FollowButton"){
-   let button = dets.target;
-   if(button.innerHTML === "Follow"){
-    button.innerHTML = "Unfollow";
-    user[dets.target.id].isFollowed = true;
-  }else{
-    button.innerHTML = "Follow";
-    user[dets.target.id].isFollowed = false;
-   }
-  }
-  
-  if(dets.target.className === "musie"){
-      if(user[dets.target.id].ismuted){
-        
-        user[dets.target.id].ismuted = false;
-      }else{
-        user[dets.target.id].ismuted = true;
-      }
-      
-      useApp();
-  }
-  
-  
+//     setTimeout(function(){
+//       fullScreen.style.display = "none";
+//     },3000)
+
+//   });
+// })
+
+let scrollbar = document.querySelector('.scrollbar');
+let inner = document.querySelector('.scrollbar .inner');
+
+elem.addEventListener("click",function(dets){
+    fullScreen.style.backgroundImage = `url(${users[dets.target.id].story_photo})`;
+    fullScreen.style.display = "block";
+    let grow = 10;
+
+  let inter = setInterval(() => {
+    grow += 5;
+    inner.style.width = grow+"%";
+  }, 30);
+  setTimeout(function(){
+    console.log(grow);
+    clearInterval(inter);
+      fullScreen.style.display = "none";
+  },3000)
+
 });
